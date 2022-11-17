@@ -20,5 +20,4 @@ jobs:
           fetch-depth: 0
         # Runs a single command using the runners shell
       - name: Run tests
-          working-directory: .
-          run: pwd
+        run: echo running testing
