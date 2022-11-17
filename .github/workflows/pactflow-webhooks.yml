@@ -12,6 +12,8 @@ jobs:
     steps:
         # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
         #       - name: Checkout
+      - env:
+          PACT_BROKER_TOKEN: ${{ secrets.PACT_BROKER_TOKEN }}
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
