@@ -23,6 +23,5 @@ jobs:
         # Runs a single command using the runners shell
       - name: Run tests
           run: |
-            pwd
+            pwd \
             echo running testing
-          shell: bash
