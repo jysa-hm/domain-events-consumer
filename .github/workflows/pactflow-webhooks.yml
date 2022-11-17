@@ -20,4 +20,6 @@ jobs:
           fetch-depth: 0
         # Runs a single command using the runners shell
       - name: Run tests
-        run: echo running testing
+        run: |
+          ls
+          echo running testing
