@@ -25,3 +25,4 @@ jobs:
           run: |
             pwd
             echo running testing
+          shell: bash
