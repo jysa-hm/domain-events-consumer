@@ -3,9 +3,6 @@ on:
   pull_request:
     branches:
       - master
-    types:
-      - ready_for_review
-      - review_requested
 jobs:
     # This workflow contains a single job called "build"
   build:
