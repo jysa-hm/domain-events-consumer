@@ -15,7 +15,7 @@ on:
 
 env:
   PACT_BROKER_BASE_URL: https://happymoney.pactflow.io
-  PACT_BROKER_TOKEN: ${{ secrets.GHTOKEN }}
+  PACT_BROKER_TOKEN: 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
   PACT_BROKER_PUBLISH_VERIFICATION_RESULTS: true
   PACT_URL: ${{ github.event.client_payload.pact_url }}
   GIT_COMMIT: ${{ github.event.client_payload.sha }}
