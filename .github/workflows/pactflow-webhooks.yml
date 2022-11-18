@@ -1,4 +1,4 @@
-name: Trigger kafka pact tests
+name: trigger_kafka_pact_tests
 on:
   pull_request:
     branches:
