@@ -76,7 +76,7 @@ pact {
 		pactDirectory = "app/build/pacts"
 		pactBrokerUrl = "https://happymoney.pactflow.io"
 		pactBrokerToken = System.getenv("PACT_BROKER_TOKEN")
-		tags = listOf("domain-events-consumer")
+		tags = listOf("domain-events-consumer-qa")
 		consumerVersion = "0.0.1-SNAPSHOT"
 	}
 }

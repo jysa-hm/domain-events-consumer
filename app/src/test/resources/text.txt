@@ -1,1 +1,2 @@
-test merge protection
+build a new feature
+make a change

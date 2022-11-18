@@ -1,4 +1,4 @@
-name: trigger_kafka_pact_tests
+name: run_kafka_pact_tests
 on:
   pull_request:
     branches:
@@ -8,18 +8,19 @@ env:
   PACT_BROKER_TOKEN: ${{ secrets.PACT_BROKER_TOKEN }}
 jobs:
     # This workflow contains a single job called "build"
-  kafka_pact_tests_canIDeploy:
+  canIDeploy:
       # The type of runner that the job will run on
     runs-on: ubuntu-latest
       # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
         # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
         #       - name: Checkout
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
-          fetch-depth: 0          
+          fetch-depth: 0
         # Runs a single command using the runners shell
       - name: Run kafka pact tests
         run: |
+          echo Running tests from the branch that triggers the workflow.. \
           ./gradlew build && \
           bash app/src/test/java/com/happymoney/domain_events_consumer/pactio/consumer/kafka/cmd/kafka-consumer-pact-test.sh
