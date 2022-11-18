@@ -1,0 +1,62 @@
+{
+  "namespace": "com.happymoney.api_platform.avro",
+  "name": "ResourceEvent",
+  "type": "record",
+  "fields": [
+    {
+      "name": "eventId",
+      "type": "string"
+    },
+    {
+      "name": "tenantId",
+      "type": "string"
+    },
+    {
+      "name": "resourceId",
+      "type": [
+        "null",
+        "string"
+      ],
+      "default": null
+    },
+    {
+      "name": "resourceUrl",
+      "type": [
+        "null",
+        "string"
+      ],
+      "default": null
+    },
+    {
+      "name": "applicationName",
+      "type": "string"
+    },
+    {
+      "name": "eventType",
+      "type": "string"
+    },
+      {
+        "name": "created",
+        "type": "string"
+      },
+    {
+      "name": "status",
+      "type": {
+        "name": "EventStatus",
+        "type": "enum",
+        "symbols": [
+          "SUCCESS",
+          "FAILED"
+        ]
+      }
+    },
+    {
+      "name": "reason",
+      "type": [
+        "null",
+        "string"
+      ],
+      "default": null
+    }
+  ]
+}

@@ -4,6 +4,7 @@ plugins {
 	id("io.spring.dependency-management") version ("1.0.11.RELEASE")
 	id("au.com.dius.pact") version "4.3.2"
 	id("com.github.davidmc24.gradle.plugin.avro") version ("1.2.0")
+	id("io.freefair.lombok") version "5.3.0"
 }
 
 group = "com.happymoney.webhook_domain_events_consumer"
@@ -39,10 +40,12 @@ dependencies {
 	testImplementation("org.testcontainers:kafka:1.17.3")
 	testImplementation("org.springframework.kafka:spring-kafka-test")
 	testImplementation("io.github.bonigarcia:webdrivermanager:5.2.3")
+	annotationProcessor("org.projectlombok:lombok-mapstruct-binding:0.2.0")
+	implementation("org.mapstruct:mapstruct:1.4.2.Final")
 
 	testImplementation("au.com.dius.pact.provider:junit5spring:4.3.12")
 	testImplementation("au.com.dius.pact.consumer:junit5:4.3.12")
-	testImplementation(files("/Users/jysa/Documents/poc/domain-events-consumer/app/src/test/resources/app-plain.jar"))
+//	testImplementation(files("/Users/jysa/Documents/poc/domain-events-consumer/app/src/test/resources/app-plain.jar"))
 	implementation("org.apache.avro:avro:1.10.0")
 	implementation("io.confluent:kafka-avro-serializer:6.2.0")
 }
