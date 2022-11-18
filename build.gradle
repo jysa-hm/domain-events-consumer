@@ -48,3 +48,22 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+// For canideploy
+pact {
+	broker {
+		pactBrokerUrl = "https://happymoney.pactflow.io"
+		pactBrokerToken = System.getenv("PACT_BROKER_TOKEN")
+	}
+}
+
+// For pactPublish
+pact {
+	publish {
+		pactDirectory = "app/build/pacts"
+		pactBrokerUrl = "https://happymoney.pactflow.io"
+		pactBrokerToken = System.getenv("PACT_BROKER_TOKEN")
+		tags = listOf("domain-events-consumer")
+		consumerVersion = "0.0.1-SNAPSHOT"
+	}
+}
