@@ -1,6 +1,2 @@
-test merge protection
-
 build a new feature
-
-Make some update
-Make another update
+make a change
