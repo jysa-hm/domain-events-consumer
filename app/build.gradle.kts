@@ -42,7 +42,7 @@ dependencies {
 
 	testImplementation("au.com.dius.pact.provider:junit5spring:4.3.12")
 	testImplementation("au.com.dius.pact.consumer:junit5:4.3.12")
-	testImplementation(files("/Users/jysa/Documents/poc/domain-events-consumer/app/src/test/resources/app-plain.jar"))
+	testImplementation(files("app/src/test/resources/app-plain.jar"))
 	implementation("org.apache.avro:avro:1.10.0")
 	implementation("io.confluent:kafka-avro-serializer:6.2.0")
 }
