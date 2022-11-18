@@ -1,4 +1,4 @@
-package com.happymoney.webhook_domain_events_consumer.pactio.consumer.kafka;
+package com.happymoney.domain_events_consumer.pactio.consumer.kafka;
 
 import au.com.dius.pact.consumer.MessagePactBuilder;
 import au.com.dius.pact.consumer.dsl.PactDslJsonBody;

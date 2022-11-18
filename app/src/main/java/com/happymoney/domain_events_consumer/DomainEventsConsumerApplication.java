@@ -1,4 +1,4 @@
-package com.happymoney.webhook_domain_events_consumer;
+package com.happymoney.domain_events_consumer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
