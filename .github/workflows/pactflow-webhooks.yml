@@ -12,11 +12,11 @@ jobs:
     steps:
         # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
         #       - name: Checkout
-      - env:
-          PACT_BROKER_TOKEN: ${{ secrets.PACT_BROKER_TOKEN }}
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+      - env:
+          PACT_BROKER_TOKEN: ${{ secrets.PACT_BROKER_TOKEN }}
         # Runs a single command using the runners shell
       - name: Run kafka pact tests
         run: bash src/test/java/com/happymoney/webhook_domain_events_consumer/pactio/consumer/kafka/cmd/kafka-consumer-pact-test.sh
