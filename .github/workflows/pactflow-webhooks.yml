@@ -1,4 +1,4 @@
-name: trigger_kafka_pact_tests
+name: run_kafka_pact_tests
 on:
   pull_request:
     branches:
@@ -8,7 +8,7 @@ env:
   PACT_BROKER_TOKEN: ${{ secrets.PACT_BROKER_TOKEN }}
 jobs:
     # This workflow contains a single job called "build"
-  kafka_pact_tests_canIDeploy:
+  canIDeploy:
       # The type of runner that the job will run on
     runs-on: ubuntu-latest
       # Steps represent a sequence of tasks that will be executed as part of the job
