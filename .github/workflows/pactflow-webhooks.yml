@@ -3,6 +3,7 @@ on:
   pull_request:
     branches:
       - main
+    types: closed
   workflow_dispatch:
 env:
   PACT_BROKER_TOKEN: ${{ secrets.PACT_BROKER_TOKEN }}
