@@ -3,6 +3,8 @@ on:
   pull_request:
     branches:
       - main
+env:
+  PACT_BROKER_TOKEN: ${{ secrets.PACT_BROKER_TOKEN }}
 jobs:
     # This workflow contains a single job called "build"
   build:
@@ -14,9 +16,7 @@ jobs:
         #       - name: Checkout
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 0
-      - env:
-          PACT_BROKER_TOKEN: ${{ secrets.PACT_BROKER_TOKEN }}
+          fetch-depth: 0          
         # Runs a single command using the runners shell
       - name: Run kafka pact tests
         run: bash src/test/java/com/happymoney/webhook_domain_events_consumer/pactio/consumer/kafka/cmd/kafka-consumer-pact-test.sh
