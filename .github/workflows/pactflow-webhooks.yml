@@ -21,5 +21,4 @@ jobs:
         # Runs a single command using the runners shell
       - name: Run kafka pact tests
         run: |
-#          bash app/src/test/java/com/happymoney/domain_events_consumer/pactio/consumer/kafka/cmd/pactPublish.sh &&
           bash app/src/test/java/com/happymoney/domain_events_consumer/pactio/consumer/kafka/cmd/canIDeploy.sh
