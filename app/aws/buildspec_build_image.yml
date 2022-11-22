@@ -1,0 +1,124 @@
+version: 0.2
+
+env:
+  shell: bash
+#  parameter-store:
+#    NPM_TOKEN: "/devops/build/npmToken"
+#    DOCKERHUB_USERNAME: "/devops/build/dockerhubUsername"
+#    DOCKERHUB_PASSWORD: "/devops/build/dockerhubPassword"
+#    SONAR_TOKEN: "/devops/build/sonarToken"
+#  variables:
+#    DOCKER_BUILDKIT: 1
+#    COMPOSE_DOCKER_CLI_BUILD: 1
+#    BUILDKIT_INLINE_CACHE: 1
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto11
+      nodejs: 12
+    commands:
+      - n 16
+
+  pre_build:
+    commands:
+      - echo Running kafka pact tests
+      - ls
+      - pwd
+      - bash app/src/test/java/com/happymoney/domain_events_consumer/pactio/consumer/kafka/cmd/canIDeploy.sh
+#      - echo Logging in to Amazon ECR...
+#      - echo Uninstalling AWS CLI V1
+#      - rm -rf /usr/local/aws
+#      - rm -rf /root/.pyenv/shims/aws
+#      - echo Installing AWS CLI V2
+#      - curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+#      - unzip -qq awscliv2.zip
+#      - ./aws/install
+#      - aws --version
+#      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 730502903637.dkr.ecr.us-east-1.amazonaws.com
+#      - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
+#      - REPOSITORY_URI=730502903637.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${Service}
+#      - SKIP_BUILD=$(aws ecr describe-images --repository-name=${Service} --image-ids=imageTag=${CODEBUILD_RESOLVED_SOURCE_VERSION} 2> /dev/null | jq '.imageDetails[0].imageTags[0]' -r)
+#      - echo Service ${Service}
+#      - echo Commit ${CODEBUILD_RESOLVED_SOURCE_VERSION}
+#      - echo Desired tag ${Environment}
+#      - echo Receiving CODEARTIFACT_AUTH_TOKEN
+#      - export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain happymoney --domain-owner 730502903637 --query authorizationToken --output text`
+#      - npm -v
+#      - npm install -g semantic-release @semantic-release/git @semantic-release/changelog @semantic-release/exec -D
+#      - export GH_TOKEN=$(aws ssm get-parameters --names "/devops/github/oauth" --with-decryption --region us-east-1 --query "Parameters[].Value" --output text)
+#      - "if [[ ! -z $SKIP_BUILD ]]; then echo Image already exists; fi"
+  build:
+    commands:
+#      - export CODEBUILD_GIT_BRANCH="$(git symbolic-ref HEAD --short 2>/dev/null)"
+#      - |
+#        if [ "$CODEBUILD_GIT_BRANCH" = "" ] ; then
+#          export CODEBUILD_GIT_BRANCH="$(git rev-parse HEAD | xargs git name-rev | cut -d' ' -f2 | sed 's/remotes\/origin\///g')";
+#        fi
+#      - echo branch=$CODEBUILD_GIT_BRANCH
+#      - |
+#        if [[ -z $SKIP_BUILD ]]; then
+#          echo Run Semantic Release
+#          npx semantic-release
+#        fi
+#      - |
+#        if [[ -z $SKIP_BUILD ]]; then
+#          echo Run Tests
+#          ./gradlew test
+#        fi
+#      - |
+#        if [[ -z $SKIP_BUILD ]]; then
+#          echo Run CheckStyle
+#          ./gradlew check
+#        fi
+#      - |
+#        if [[ -z $SKIP_BUILD ]]; then
+#          echo Run Static Analysis
+#          ./gradlew sonarqube -Dsonar.login=$SONAR_TOKEN -Dsonar.branch.name=$CODEBUILD_GIT_BRANCH
+#        fi
+#      - echo Build the application.
+#      - |
+#        if [[ -z $SKIP_BUILD ]]; then
+#          export CODEBUILD_GIT_TAG="$(git tag | sort -V | tail -1)"
+#          if [[ $CODEBUILD_GIT_BRANCH == main ]]; then
+#            export VERSION=${CODEBUILD_GIT_TAG};
+#          else
+#            export CODEBUILD_GIT_AUTHOR="$(git log -1 --pretty=%an)";
+#            export VERSION=${CODEBUILD_GIT_TAG}'-'${CODEBUILD_GIT_AUTHOR// /-};
+#          fi
+#          echo Build Image...
+#          echo Release $VERSION
+#          docker build --build-arg CODEARTIFACT_AUTH_TOKEN=${CODEARTIFACT_AUTH_TOKEN} --build-arg APP_VERSION=${VERSION} --build-arg BUILDKIT_INLINE_CACHE=$BUILDKIT_INLINE_CACHE -t happymoney/${Service} -t $REPOSITORY_URI:${CODEBUILD_RESOLVED_SOURCE_VERSION} -t $REPOSITORY_URI:${VERSION} .
+#        fi
+  post_build:
+    commands:
+#      - |
+#        if [[ $CODEBUILD_BUILD_SUCCEEDING == 0 ]]; then
+#          echo Build Failed
+#          exit 1
+#        fi
+#      - |
+#        if [[ -z $SKIP_BUILD ]]; then
+#          echo Build completed on `date`
+#          echo Pushing the Docker images...
+#          docker push $REPOSITORY_URI:${CODEBUILD_RESOLVED_SOURCE_VERSION}
+#          docker push $REPOSITORY_URI:${VERSION}
+#        fi
+#      - 'payload="{\"ECR_Repo\": \""${Service}"\", \"Environment\": \""${Environment}"\", \"Commit\": \""${CODEBUILD_RESOLVED_SOURCE_VERSION}"\"}"'
+#      - echo $payload
+#      - aws lambda invoke --function-name promoteImage --payload "$payload" --invocation-type Event --cli-binary-format raw-in-base64-out promoteImage.out
+#      - |
+#        for env in dev qa qa1 uat stage prod
+#        do
+#          printf '[{"name":"%s","imageUri":"%s"}]' "${ECS_Container_Name}" "$REPOSITORY_URI:$env" > imagedefinitions_$env.json
+#        done
+#      - printf '[{"name":"%s","imageUri":"%s"}]' "api-platform-whook-events-consume-green" "$REPOSITORY_URI:prodsandbox" > imagedefinitions_prodsandbox.json
+#artifacts:
+#  files:
+#    - imagedefinitions_*.json
+
+#cache:
+#  paths:
+#    - '/root/.npm/**/*'
+#    - '/root/.gradle/caches/**/*'
+#    - '/root/.gradle/wrapper/**/*'
