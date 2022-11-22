@@ -2,7 +2,8 @@ version: 0.2
 
 env:
   shell: bash
-#  parameter-store:
+  parameter-store:
+    PACT_BROKER_TOKEN: "/ep/pactio/pactflow/token"
 #    NPM_TOKEN: "/devops/build/npmToken"
 #    DOCKERHUB_USERNAME: "/devops/build/dockerhubUsername"
 #    DOCKERHUB_PASSWORD: "/devops/build/dockerhubPassword"
